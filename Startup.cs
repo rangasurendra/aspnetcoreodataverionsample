@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Serialization;
 using static Microsoft.AspNetCore.Mvc.CompatibilityVersion;
 using static Microsoft.OData.ODataUrlKeyDelimiter;
 
@@ -32,8 +31,15 @@ namespace WebODataDataService
             .AddMvc(options => options.EnableEndpointRouting = false)
             .AddJsonOptions(j =>
                 {
+                    //
+                    // Summary:
+                    //     Gets or sets a value that specifies the policy used to convert a property's name
+                    //     on an object to another format, such as camel-casing, or null to leave property
+                    //     names unchanged.
+                    //
+                    // Returns:
+                    //     A property naming policy, or null to leave property names unchanged.
                     j.JsonSerializerOptions.PropertyNamingPolicy = null;
-                    j.JsonSerializerOptions.DictionaryKeyPolicy = null;
                 })
             .SetCompatibilityVersion(Latest);
 
